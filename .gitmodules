@@ -1,0 +1,6 @@
+[submodule "deepwalk"]
+	path = deepwalk
+	url = https://github.com/phanein/deepwalk.git
+[submodule "node2vec"]
+	path = node2vec
+	url = https://github.com/aditya-grover/node2vec.git
