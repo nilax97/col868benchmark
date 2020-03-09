@@ -9,7 +9,7 @@ iteration = [1,5,10,50,100]
 p_list = [0.1,0.5,1,2,10]
 q_list = [0.1,0.5,1,2,10]
 
-input_file = "PROTEINS_full_A_copy.txt"
+input_file = "PROTEINS_full_A.txt"
 
 for n_walk in num_walks:
     dim = 128
@@ -20,8 +20,6 @@ for n_walk in num_walks:
     q = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
 
@@ -34,8 +32,6 @@ for dim in dimension:
     q = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
 
@@ -48,8 +44,6 @@ for w_len in walk_len:
     q = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
 
@@ -62,8 +56,6 @@ for win in window:
     q = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
 
@@ -76,8 +68,6 @@ for ite in iteration:
     q = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
     
@@ -90,8 +80,6 @@ for p in p_list:
     q = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
 
@@ -104,8 +92,6 @@ for q in q_list:
     p = 1
     output_file = "node2vec_" + str(n_walk) + "_" + str(dim) + "_" + str(w_len) + "_" + str(win)+ "_" + str(ite)+ "_" + str(p)+ "_" + str(q) + ".embeddings"
     command = "time python2 -W ignore ../../node2vec/src/main.py --input " + input_file + " --output "+ output_file + " --dimensions " + str(dim) + " --walk-length " + str(w_len) + " --num-walks " + str(n_walk) + " --window-size " + str(win) + " --iter " + str(ite) + " --workers 8 --p " + str(p) + " --q " + str(q)
-    if os.path.exists(output_file):
-        continue
     os.system(command)
     print(output_file + " ---- DONE")
 

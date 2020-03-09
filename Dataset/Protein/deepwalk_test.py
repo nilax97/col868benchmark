@@ -6,7 +6,7 @@ rep_size = [32,64,128,256]
 walk_len = [5,15,50,100]
 window = [5,10,20]
 
-input_file = "PROTEINS_full_A_copy.txt"
+input_file = "PROTEINS_full_A.txt"
 
 for n_walk in num_walks:
     r_size = 64

@@ -12,7 +12,7 @@ from sklearn.model_selection import KFold
 from sklearn.metrics import classification_report,confusion_matrix,roc_auc_score
 from sklearn.metrics import precision_score, recall_score,f1_score
 
-train_size = 10000
+train_size = 100000
 
 error = [21890,32320,34134,40901,41002]
 line = open("PROTEINS_full_node_labels.txt").readlines()

@@ -27,7 +27,7 @@ for i in range(n):
 del temp
 
 dir_list = ["deepwalk_embeddings/"]
-#dir_list = ["node2vec_embeddings/"]
+# dir_list = ["node2vec_embeddings/"]
 
 for folder in dir_list:
     for file in os.listdir(folder):
@@ -44,9 +44,57 @@ for folder in dir_list:
             val = temp[1:]
             for i in range(len(val)):
                 embedding[index,i] = float(val[i])
-        print(embedding.shape)
         X = embedding
         y = target
+
+        roc = np.zeros(5*m)
+        prec = np.zeros(5*m)
+        rec = np.zeros(5*m)
+        f1 = np.zeros(5*m)
+        index = 0
+        kf = KFold(n_splits=5, shuffle=True)
+        for train_index, test_index in kf.split(X):
+            X_train, X_test = X[train_index], X[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+            for i in range(m):
+                clf = LogisticRegression(penalty='l2', solver='saga', class_weight='balanced', n_jobs=16)
+                clf.fit(X_train,y_train[:,i])
+                pred = clf.predict(X_test)
+        
+                roc[index*m+i] = roc_auc_score(y_test[:,i],pred)
+                prec[index*m+i] = precision_score(y_test[:,i],pred)
+                rec[index*m+i] = recall_score(y_test[:,i],pred)
+                f1[index*m+i] = f1_score(y_test[:,i],pred)
+            index += 1
+        print("LogisticRegression")
+        print(round(np.average(roc),3))
+        print(round(np.average(prec),3))
+        print(round(np.average(rec),3))
+        print(round(np.average(f1),3))
+
+        roc = np.zeros(5)
+        prec = np.zeros(5)
+        rec = np.zeros(5)
+        f1 = np.zeros(5)
+        index = 0
+        kf = KFold(n_splits=5, shuffle=True)
+        for train_index, test_index in kf.split(X, y):
+            X_train, X_test = X[train_index], X[test_index]
+            y_train, y_test = y[train_index], y[test_index]
+            clf = MLPClassifier(verbose=1)
+            clf.fit(X_train,y_train)
+            pred = clf.predict(X_test)
+        
+            roc[index] = roc_auc_score(y_test,pred, average='micro')
+            prec[index] = precision_score(y_test,pred, average='micro')
+            rec[index] = recall_score(y_test,pred, average='micro')
+            f1[index] = f1_score(y_test,pred, average='micro')
+            index += 1
+        print("MLP")
+        print(round(np.average(roc),3))
+        print(round(np.average(prec),3))
+        print(round(np.average(rec),3))
+        print(round(np.average(f1),3))
         
         roc = np.zeros(5)
         prec = np.zeros(5)
