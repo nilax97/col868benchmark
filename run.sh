@@ -20,7 +20,7 @@ cd Dataset/PPI
 python3 make_edge.py
 rm ppi-G.json
 cd ../..
-
+cd .
 echo "Datasets copied and cleaned"
 
 cd deepwalk
